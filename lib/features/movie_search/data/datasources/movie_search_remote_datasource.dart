@@ -11,6 +11,7 @@ abstract class MovieSearchRemoteDataSource {
 
 class MovieSearchRemoteDataSourceImpl implements MovieSearchRemoteDataSource {
   http.Client client = http.Client();
+  MovieSearchRemoteDataSourceImpl({required this.client});
   @override
   Future<MovieSearchModel> getMovies(String query) => _getMovieFromURL(
       "https://api.themoviedb.org/3/search/movie?api_key=43236c9b4ffaa78012ee092b4e4f74d8&language=en-US&page=1&include_adult=false&query=${query}");
