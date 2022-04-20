@@ -10,7 +10,7 @@ abstract class MovieSearchLocalDataSource {
   Future<void>? cacheMovieSearch(MovieSearchModel triviaToCache);
 }
 
-const CACHED_NUMBER_TRIVIA = "CACHED_NUMBER_TRIVIA";
+const CACHED_MOVIE_SEARCH = "CACHED_MOVIE_SEARCH";
 
 class MovieSearchLocalDataSourceImpl implements MovieSearchLocalDataSource {
   final SharedPreferences sharedPreferences;
@@ -19,13 +19,12 @@ class MovieSearchLocalDataSourceImpl implements MovieSearchLocalDataSource {
   @override
   Future<void>? cacheMovieSearch(MovieSearchModel triviaToCache) {
     sharedPreferences.setString(
-        CACHED_NUMBER_TRIVIA, json.encode(triviaToCache.toJson()));
+        CACHED_MOVIE_SEARCH, json.encode(triviaToCache.toJson()));
   }
 
   @override
   Future<MovieSearchModel> getLastMovieSearch() {
-    final String? jsonString =
-        sharedPreferences.getString(CACHED_NUMBER_TRIVIA);
+    final String? jsonString = sharedPreferences.getString(CACHED_MOVIE_SEARCH);
     if (jsonString != null) {
       return Future.value(MovieSearchModel.fromJson(json.decode(jsonString)));
     } else {
