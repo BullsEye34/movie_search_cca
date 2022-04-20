@@ -10,7 +10,7 @@ class MovieDiplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: MediaQuery.of(context).size.height / 1.2,
+        height: MediaQuery.of(context).size.height / 1.25,
         child: ListView.builder(
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
