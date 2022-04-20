@@ -7,12 +7,12 @@ abstract class MoviesearchEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetMovieForSearch extends MoviesearchEvent {
+class GetMovieForSearchEvent extends MoviesearchEvent {
   String title;
-  GetMovieForSearch({required this.title});
+  GetMovieForSearchEvent({required this.title});
 
   @override
   List<Object> get props => [title];
 }
 
-class GetTrendingMovies extends MoviesearchEvent {}
+class GetTrendingMoviesEvent extends MoviesearchEvent {}
