@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:movie_search/core/network/network_info.dart';
 import 'package:movie_search/features/movie_search/data/datasources/movie_search_local_datasource.dart';
 import 'package:movie_search/features/movie_search/data/datasources/movie_search_remote_datasource.dart';
 import 'package:movie_search/features/movie_search/data/repositories/movie_search_repo_impl.dart';
@@ -33,8 +34,11 @@ Future<void> init() async {
       () => MovieSearchLocalDataSourceImpl(sharedPreferences: sl()));
 
   //! Core
-  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  sl.registerLazySingleton(() => sharedPreferences);
+  sl.registerLazySingleton<NetworkInformation>(
+      () => NetworkInformationImpl(sl()));
+  //! External
+  SharedPreferences sharedPreferencess = await SharedPreferences.getInstance();
+  sl.registerLazySingleton(() => sharedPreferencess);
   sl.registerLazySingleton(() => http.Client());
   sl.registerLazySingleton(() => InternetConnectionChecker());
 }
