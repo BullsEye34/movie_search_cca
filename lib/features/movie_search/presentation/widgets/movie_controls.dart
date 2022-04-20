@@ -28,9 +28,19 @@ class _MovieSearchControlsState extends State<MovieSearchControls> {
       decoration: InputDecoration(
         hintText: "Search for a Movie!",
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(20),
         ),
-        suffixIcon: const Icon(Icons.search),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.secondary,
+            width: 2,
+          ),
+        ),
+        suffixIcon: Icon(
+          Icons.search,
+          color: Theme.of(context).colorScheme.secondary,
+        ),
       ),
     );
   }
