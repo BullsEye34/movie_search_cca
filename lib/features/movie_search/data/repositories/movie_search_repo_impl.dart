@@ -41,7 +41,7 @@ class MovieSearchRepoImpl implements MovieSearchRepository {
       }
     } else {
       try {
-        final localtrivia = await localDataSource.getLastMovieSearch()!;
+        final localtrivia = await localDataSource.getLastMovieSearch();
         return Right(localtrivia);
       } on CacheException {
         return Left(CacheFailure());
